@@ -1,7 +1,7 @@
 # Career Autofill AI
 
 **Name:** Aditya Tayal  
-**University:** Indian Instittute of Technology Mandi
+**University:** Indian Institute of Technology Mandi  
 **Department:** Computer Science Engineering 3rd Year  
 **Email:** b23243@students.iitmandi.ac.in  
 
