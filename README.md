@@ -2,7 +2,7 @@
 
 **Name:** Aditya Tayal  
 **University:** Indian Instittute of Technology Mandi
-**Department:** Cmputer Science Engineering 3rd Year  
+**Department:** Computer Science Engineering 3rd Year  
 **Email:** b23243@students.iitmandi.ac.in  
 
 An AI-powered agent that automates job application form filling by reasoning, planning, and executing tasks using fine-tuned models.
@@ -38,11 +38,10 @@ This project implements an AI agent that selects a manual task (job application 
 - **User Interface**: 
   - Web dashboard (React/Vite)
   - Browser extension for seamless form filling
-  - CLI for batch processing
 
 ## Notes
 
-✅ LLMs were used during development for code generation and architecture design. All interaction logs are included in the deliverables.
+LLMs were used during development for code generation and architecture design. All interaction logs are included in the deliverables.
 
 ## Deliverables
 
@@ -50,7 +49,8 @@ This project implements an AI agent that selects a manual task (job application 
 - **Architecture Document**: See `ARCHITECTURE.md`
 - **Data Science Report**: See `DATA_SCIENCE_REPORT.md`
 - **Interaction Logs**: See `INTERACTION_LOGS.md`
-- **Demo Video**: [Watch Demo](https://example.com/demo-video-link) *(Replace with actual link)*
+- **Demo Video**: [Watch Demo](https://drive.google.com/file/d/1W3HdBg-nhgwgUqAJKX-SNZ1wAER7SXW0/view?usp=sharing).
+- **Project Report**: [View Here](https://drive.google.com/file/d/1EOH4BWjM0I6FiQQceSq6S59yRyvFfZlB/view?usp=sharing).
 
 ## Installation & Setup
 
@@ -89,11 +89,3 @@ python src/main.py --interactive
 - **Backend**: Python FastAPI for AI processing
 - **Models**: Fine-tuned LLM with LoRA for specialized tasks
 - **Extension**: Chrome extension for browser integration
-
-## Contributing
-
-This is a prototype project. For improvements or issues, please create a PR or issue in this repository.
-
-## License
-
-MIT License
