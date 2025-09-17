@@ -1,0 +1,90 @@
+{
+  "basics": {
+    "name": "Aditya Tayal",
+    "label": "Software Engineer",
+    "email": "aditya@example.com",
+    "phone": "+91 9876543210",
+    "website": "https://adityatayal.dev",
+    "summary": "Skilled software engineer with expertise in AI applications, full-stack development, and cloud architecture. Passionate about building intelligent, user-friendly applications that solve real-world problems.",
+    "location": {
+      "address": "123 Tech Lane",
+      "city": "Bangalore",
+      "region": "Karnataka",
+      "postalCode": "560001",
+      "countryCode": "IN"
+    }
+  },
+  "work": [
+    {
+      "company": "Tech Innovations Inc.",
+      "position": "Senior Software Engineer",
+      "website": "https://techinnovations.com",
+      "startDate": "2023-01",
+      "endDate": "Present",
+      "summary": "Lead developer for AI-powered automation tools",
+      "highlights": [
+        "Designed and implemented an AI-driven form automation system",
+        "Reduced manual data entry time by 85%",
+        "Led a team of 5 developers to deliver key projects ahead of schedule"
+      ]
+    },
+    {
+      "company": "DataSmart Solutions",
+      "position": "Software Developer",
+      "website": "https://datasmart.com",
+      "startDate": "2020-06",
+      "endDate": "2022-12",
+      "summary": "Full-stack developer focused on data processing applications",
+      "highlights": [
+        "Built robust ETL pipelines processing 10TB+ of data daily",
+        "Implemented machine learning models for data classification",
+        "Reduced system response time by 40% through optimization"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "IIT Mandi",
+      "area": "Computer Science Engineering",
+      "studyType": "Bachelor of Technology",
+      "startDate": "2019-07",
+      "endDate": "2023-05",
+      "gpa": "3.8",
+      "courses": [
+        "Machine Learning",
+        "Artificial Intelligence",
+        "Data Structures and Algorithms",
+        "Cloud Computing"
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "name": "Programming Languages",
+      "keywords": ["JavaScript", "Python", "TypeScript", "Java", "C++"]
+    },
+    {
+      "name": "Web Technologies",
+      "keywords": ["React", "Node.js", "Express", "HTML5", "CSS3", "Tailwind CSS"]
+    },
+    {
+      "name": "AI/ML",
+      "keywords": ["TensorFlow", "PyTorch", "NLP", "Computer Vision", "LLMs"]
+    },
+    {
+      "name": "Cloud & DevOps",
+      "keywords": ["AWS", "Docker", "Kubernetes", "CI/CD", "Azure"]
+    }
+  ],
+  "projects": [
+    {
+      "name": "AI AutoFill Assistant",
+      "description": "Browser extension that automatically fills forms using AI",
+      "highlights": [
+        "Used NLP for field recognition",
+        "Implemented context-aware form filling",
+        "Built with React, TypeScript and Python backend"
+      ]
+    }
+  ]
+}

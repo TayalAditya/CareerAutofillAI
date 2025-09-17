@@ -1,0 +1,51 @@
+{
+  "name": "Aditya Tayal",
+  "email": "aditya@example.com",
+  "university": "IIT Mandi",
+  "department": "CSE",
+  "year": "UG (Batch 2023)",
+  "skills": ["Python", "Machine Learning", "Flask", "Next.js", "TensorFlow", "Linux", "Computer Vision", "Deep Learning", "PyTorch", "React", "Node.js", "Git", "Docker", "AWS"],
+  "projects": [
+    {
+      "title": "DyslexoFly",
+      "description": "AI-powered accessible learning platform with summarization and TTS. Built using Flask backend and Next.js frontend with TensorFlow models for text processing.",
+      "technologies": ["Flask", "Next.js", "TensorFlow", "Python", "JavaScript"],
+      "impact": "Helped 500+ students with learning disabilities"
+    },
+    {
+      "title": "CaptureSmart",
+      "description": "Real-time camera enhancement application with TensorFlow and Android SDK. Implemented computer vision algorithms for image quality improvement.",
+      "technologies": ["TensorFlow", "Android SDK", "Python", "Computer Vision"],
+      "impact": "Achieved 40% improvement in image quality metrics"
+    },
+    {
+      "title": "Deepfake Detection",
+      "description": "Vision transformer based detection pipeline for identifying manipulated media. Achieved 94% accuracy on benchmark datasets.",
+      "technologies": ["PyTorch", "Computer Vision", "Deep Learning", "Python"],
+      "impact": "94% accuracy on FaceForensics++ dataset"
+    }
+  ],
+  "experience": [
+    {
+      "role": "STAC Core Member",
+      "organization": "IIT Mandi",
+      "description": "Led technical workshops and coding competitions",
+      "duration": "2022-2023"
+    },
+    {
+      "role": "GCS Core Member", 
+      "organization": "IIT Mandi",
+      "description": "Organized gaming events and technical competitions",
+      "duration": "2022-2023"
+    },
+    {
+      "role": "SAE Co-Coordinator",
+      "organization": "IIT Mandi",
+      "description": "Coordinated automotive engineering projects and workshops",
+      "duration": "2023-2024"
+    }
+  ],
+  "linkedin": "https://linkedin.com/in/adityatayal",
+  "github": "https://github.com/adityatayal",
+  "gpa": "8.5/10"
+}

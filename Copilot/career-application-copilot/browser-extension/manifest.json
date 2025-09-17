@@ -1,0 +1,69 @@
+{
+  "manifest_version": 3,
+  "name": "Career AutoFill Assistant Ultimate Pro Max",
+  "version": "3.5",
+  "description": "Enterprise-grade AI-powered job application autofill with advanced ML field detection, real-time analytics, smart templates, and intelligent form optimization",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "scripting",
+    "contextMenus",
+    "notifications",
+    "webNavigation",
+    "tabs",
+    "background",
+    "unlimitedStorage",
+    "identity",
+    "alarms",
+    "idle",
+    "system.display",
+    "system.memory",
+    "webRequest",
+    "declarativeNetRequest",
+    "offscreen"
+  ],
+  "host_permissions": [
+    "http://localhost:8000/*",
+    "https://*.linkedin.com/*",
+    "https://*.naukri.com/*",
+    "https://*.indeed.com/*",
+    "https://*.glassdoor.com/*",
+    "https://*.monster.com/*",
+    "<all_urls>"
+  ],
+  "action": {
+    "default_popup": "popup-ultra.html",
+    "default_title": "Career AutoFill Assistant Ultimate Pro Max - Enterprise Smart Job Application Suite"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content-ultra.js"],
+      "css": ["content-ultra.css"],
+      "run_at": "document_end"
+    }
+  ],
+  "background": {
+    "service_worker": "background-ultra.js"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["fallback-profile.json"],
+      "matches": ["<all_urls>"]
+    },
+    {
+      "resources": [
+        "injected.js", 
+        "assets/*", 
+        "templates/*", 
+        "analytics.js",
+        "ai-engine.js",
+        "form-optimizer.js",
+        "smart-templates.json",
+        "field-mapping.json"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "options_page": "options-ultra.html"
+}

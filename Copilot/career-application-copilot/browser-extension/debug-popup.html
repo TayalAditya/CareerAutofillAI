@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Extension Debug Test</title>
+    <style>
+        body {
+            width: 400px;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        .test-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .test-button:hover {
+            background: #45a049;
+        }
+        .test-button:active {
+            transform: scale(0.98);
+        }
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            background: #f0f0f0;
+        }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+        .info { background: #d1ecf1; color: #0c5460; }
+    </style>
+</head>
+<body>
+    <h2>🔧 Extension Debug Test</h2>
+    <div id="status" class="status info">Ready to test...</div>
+    
+    <button id="test-permissions" class="test-button">🔐 Test Permissions</button>
+    <button id="test-storage" class="test-button">💾 Test Storage</button>
+    <button id="test-tabs" class="test-button">📄 Test Tab Access</button>
+    <button id="test-scripting" class="test-button">⚡ Test Script Injection</button>
+    <button id="test-notifications" class="test-button">🔔 Test Notifications</button>
+    <button id="simple-autofill" class="test-button">🎯 Simple AutoFill Test</button>
+    
+    <script>
+        const status = document.getElementById('status');
+        
+        function updateStatus(message, type = 'info') {
+            status.textContent = message;
+            status.className = `status ${type}`;
+            console.log(`[${type.toUpperCase()}] ${message}`);
+        }
+        
+        // Test permissions
+        document.getElementById('test-permissions').addEventListener('click', async () => {
+            try {
+                const permissions = await chrome.permissions.getAll();
+                updateStatus(`✅ Permissions OK: ${permissions.permissions.join(', ')}`, 'success');
+            } catch (error) {
+                updateStatus(`❌ Permissions Error: ${error.message}`, 'error');
+            }
+        });
+        
+        // Test storage
+        document.getElementById('test-storage').addEventListener('click', async () => {
+            try {
+                await chrome.storage.local.set({ test: 'working' });
+                const result = await chrome.storage.local.get(['test']);
+                if (result.test === 'working') {
+                    updateStatus('✅ Storage working correctly', 'success');
+                } else {
+                    updateStatus('❌ Storage test failed', 'error');
+                }
+            } catch (error) {
+                updateStatus(`❌ Storage Error: ${error.message}`, 'error');
+            }
+        });
+        
+        // Test tab access
+        document.getElementById('test-tabs').addEventListener('click', async () => {
+            try {
+                const tabs = await chrome.tabs.query({ active: true, currentWindow: true });
+                if (tabs && tabs.length > 0) {
+                    const tab = tabs[0];
+                    updateStatus(`✅ Tab Access OK: ${tab.url}`, 'success');
+                } else {
+                    updateStatus('❌ No active tab found', 'error');
+                }
+            } catch (error) {
+                updateStatus(`❌ Tab Access Error: ${error.message}`, 'error');
+            }
+        });
+        
+        // Test script injection
+        document.getElementById('test-scripting').addEventListener('click', async () => {
+            try {
+                const tabs = await chrome.tabs.query({ active: true, currentWindow: true });
+                const tab = tabs[0];
+                
+                if (tab.url.startsWith('chrome:') || tab.url.startsWith('edge:')) {
+                    updateStatus('❌ Cannot inject scripts into browser pages', 'error');
+                    return;
+                }
+                
+                const result = await chrome.scripting.executeScript({
+                    target: { tabId: tab.id },
+                    function: () => {
+                        return { 
+                            success: true, 
+                            url: window.location.href,
+                            forms: document.querySelectorAll('form').length,
+                            inputs: document.querySelectorAll('input, textarea').length
+                        };
+                    }
+                });
+                
+                const data = result[0].result;
+                updateStatus(`✅ Script Injection OK: ${data.forms} forms, ${data.inputs} inputs`, 'success');
+                
+            } catch (error) {
+                updateStatus(`❌ Script Injection Error: ${error.message}`, 'error');
+            }
+        });
+        
+        // Test notifications
+        document.getElementById('test-notifications').addEventListener('click', async () => {
+            try {
+                chrome.notifications.create({
+                    type: 'basic',
+                    iconUrl: 'icon48.png',
+                    title: 'Extension Test',
+                    message: 'Notifications are working!'
+                });
+                updateStatus('✅ Notification sent', 'success');
+            } catch (error) {
+                updateStatus(`❌ Notification Error: ${error.message}`, 'error');
+            }
+        });
+        
+        // Simple autofill test
+        document.getElementById('simple-autofill').addEventListener('click', async () => {
+            try {
+                const tabs = await chrome.tabs.query({ active: true, currentWindow: true });
+                const tab = tabs[0];
+                
+                if (tab.url.startsWith('chrome:') || tab.url.startsWith('edge:')) {
+                    updateStatus('❌ Cannot autofill browser pages', 'error');
+                    return;
+                }
+                
+                const result = await chrome.scripting.executeScript({
+                    target: { tabId: tab.id },
+                    function: () => {
+                        let filled = 0;
+                        
+                        // Fill text inputs
+                        document.querySelectorAll('input[type="text"], input:not([type])').forEach(input => {
+                            if (!input.value && input.name && input.name.toLowerCase().includes('name')) {
+                                input.value = 'Test User';
+                                input.dispatchEvent(new Event('input', { bubbles: true }));
+                                filled++;
+                            }
+                        });
+                        
+                        // Fill email inputs
+                        document.querySelectorAll('input[type="email"]').forEach(input => {
+                            if (!input.value) {
+                                input.value = 'test@example.com';
+                                input.dispatchEvent(new Event('input', { bubbles: true }));
+                                filled++;
+                            }
+                        });
+                        
+                        return { filled, total: document.querySelectorAll('input, textarea').length };
+                    }
+                });
+                
+                const data = result[0].result;
+                updateStatus(`✅ AutoFill Test: ${data.filled}/${data.total} fields filled`, 'success');
+                
+            } catch (error) {
+                updateStatus(`❌ AutoFill Test Error: ${error.message}`, 'error');
+            }
+        });
+        
+        updateStatus('🚀 Debug panel loaded. Click buttons to test extension functionality.');
+    </script>
+</body>
+</html>

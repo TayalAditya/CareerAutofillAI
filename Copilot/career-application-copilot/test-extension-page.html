@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extension Test Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        input:focus, textarea:focus, select:focus {
+            border-color: #667eea;
+            outline: none;
+        }
+        textarea {
+            height: 120px;
+            resize: vertical;
+        }
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        .extension-note {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #2196f3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 Extension Test Page</h1>
+        
+        <div class="extension-note">
+            <strong>📝 Instructions:</strong>
+            <br>1. Click on the Career AutoFill extension icon in your browser
+            <br>2. Test the Smart AutoFill and AI Optimize buttons
+            <br>3. Check the browser console for debug messages
+        </div>
+
+        <form id="job-application-form">
+            <div class="form-group">
+                <label for="full-name">Full Name:</label>
+                <input type="text" id="full-name" name="full_name" placeholder="Enter your full name">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" placeholder="your.email@example.com">
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" placeholder="+1-555-0123">
+            </div>
+
+            <div class="form-group">
+                <label for="university">University/Education:</label>
+                <input type="text" id="university" name="university" placeholder="University name and degree">
+            </div>
+
+            <div class="form-group">
+                <label for="skills">Technical Skills:</label>
+                <textarea id="skills" name="skills" placeholder="List your technical skills (e.g., JavaScript, Python, React...)"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="experience">Work Experience:</label>
+                <textarea id="experience" name="experience" placeholder="Describe your relevant work experience"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="cover-letter">Cover Letter/Why interested:</label>
+                <textarea id="cover-letter" name="cover_letter" placeholder="Why are you interested in this position?"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="position">Position Applied For:</label>
+                <select id="position" name="position">
+                    <option value="">Select position</option>
+                    <option value="software-engineer">Software Engineer</option>
+                    <option value="data-scientist">Data Scientist</option>
+                    <option value="frontend-dev">Frontend Developer</option>
+                    <option value="backend-dev">Backend Developer</option>
+                    <option value="fullstack-dev">Full Stack Developer</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn">Submit Application</button>
+        </form>
+    </div>
+
+    <script>
+        // Console messages for debugging
+        console.log('🎯 Extension test page loaded');
+        
+        // Form submission handler
+        document.getElementById('job-application-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Form submitted! (This is just a test)');
+        });
+
+        // Check if extension is working
+        window.addEventListener('load', function() {
+            console.log('✅ Page fully loaded - Extension should be able to detect fields');
+        });
+    </script>
+</body>
+</html>

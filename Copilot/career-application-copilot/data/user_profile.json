@@ -1,0 +1,72 @@
+{
+  "name": "Aditya Tayal",
+  "email": "aditya@iitmandi.ac.in",
+  "phone": "+91-9876543210",
+  "university": "IIT Mandi",
+  "department": "Computer Science & Engineering",
+  "degree": "B.Tech",
+  "gpa": "8.5",
+  "year": "Final Year",
+  "graduation_year": "2025",
+  "skills": [
+    "Python",
+    "Machine Learning",
+    "Deep Learning",
+    "React",
+    "FastAPI",
+    "Node.js",
+    "Docker",
+    "Git",
+    "TensorFlow",
+    "PyTorch",
+    "SQL",
+    "MongoDB",
+    "AWS",
+    "Kubernetes",
+    "Natural Language Processing",
+    "Computer Vision",
+    "Data Science",
+    "JavaScript",
+    "TypeScript",
+    "Java"
+  ],
+  "experience": [
+    {
+      "title": "Machine Learning Intern",
+      "company": "TechCorp Ltd",
+      "duration": "Jun 2024 - Aug 2024",
+      "description": "Developed NLP models for sentiment analysis, achieving 92% accuracy on customer feedback data."
+    },
+    {
+      "title": "Full Stack Developer Intern",
+      "company": "StartupX",
+      "duration": "Dec 2023 - Feb 2024", 
+      "description": "Built responsive web applications using React and Node.js, serving 10,000+ users."
+    }
+  ],
+  "projects": [
+    {
+      "name": "AI-Powered Career Application Copilot",
+      "description": "Multi-agent system for automating job applications with fine-tuned LLMs",
+      "technologies": ["Python", "FastAPI", "Transformers", "React"],
+      "github": "https://github.com/adityatayal/career-copilot"
+    },
+    {
+      "name": "Smart Home Automation System",
+      "description": "IoT-based home automation with machine learning optimization",
+      "technologies": ["Python", "TensorFlow", "Arduino", "React Native"],
+      "achievement": "Reduced energy consumption by 30%"
+    }
+  ],
+  "achievements": [
+    "Dean's List for Academic Excellence (2023, 2024)",
+    "Winner - Inter-IIT Tech Meet ML Competition 2024",
+    "Published research paper on NLP at IEEE Conference",
+    "Google Summer of Code Participant 2023"
+  ],
+  "certifications": [
+    "AWS Certified Solutions Architect",
+    "Google Professional ML Engineer",
+    "Microsoft Azure AI Fundamentals"
+  ]
+}

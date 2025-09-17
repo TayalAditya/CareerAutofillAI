@@ -1,0 +1,56 @@
+Software Development Intern - Full Stack
+
+Company: StartupX
+Location: Remote
+Duration: 6 months
+
+About StartupX:
+StartupX is a fast-growing fintech startup revolutionizing digital payments. We're building scalable solutions that serve millions of users across India.
+
+Role Overview:
+We're looking for a motivated software development intern to join our engineering team. You'll work on both frontend and backend development, contributing to our core product features.
+
+Key Responsibilities:
+- Develop web applications using React.js and Next.js
+- Build RESTful APIs using Node.js and Express
+- Work with databases (MongoDB, PostgreSQL)
+- Implement responsive UI/UX designs
+- Write unit tests and participate in code reviews
+- Collaborate with product and design teams
+- Debug and optimize application performance
+
+Technical Requirements:
+- Proficiency in JavaScript/TypeScript
+- Experience with React.js or similar frontend frameworks
+- Knowledge of Node.js and backend development
+- Understanding of SQL and NoSQL databases
+- Familiarity with Git and collaborative development
+- Basic understanding of cloud services (AWS/Azure)
+- Knowledge of HTML5, CSS3, and responsive design
+
+Preferred Skills:
+- Experience with Next.js or other React frameworks
+- Knowledge of microservices architecture
+- Understanding of CI/CD pipelines
+- Experience with Docker and containerization
+- Familiarity with payment gateway integrations
+- Previous internship or project experience
+- Open source contributions
+
+What You'll Learn:
+- Agile development methodologies
+- Scalable system architecture
+- Production deployment and monitoring
+- Code review and collaboration best practices
+- Working in a fast-paced startup environment
+
+Benefits:
+- Competitive stipend
+- Flexible working hours
+- Mentorship from senior developers
+- Opportunity to work on real user-facing features
+- Potential for full-time offer
+- Learning and development budget
+
+To Apply:
+Submit your resume, cover letter, and GitHub profile. Include links to your best projects and explain why you're interested in fintech.

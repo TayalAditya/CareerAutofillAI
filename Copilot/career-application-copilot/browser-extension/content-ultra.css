@@ -1,0 +1,695 @@
+/* content-ultra.css - Enterprise-grade ultra-heavy styling */
+
+/* Ultra Advanced Notification System */
+#ultra-notification-overlay {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 100000;
+    pointer-events: none;
+    font-family: 'Inter', 'Segoe UI', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+    max-width: 380px;
+}
+
+.ultra-notification {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 16px 24px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    transform: translateX(100%);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.2),
+        0 2px 8px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    pointer-events: auto;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.ultra-notification::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s ease;
+}
+
+.ultra-notification:hover::before {
+    left: 100%;
+}
+
+.ultra-notification:hover {
+    transform: translateX(-4px) scale(1.02);
+    box-shadow: 
+        0 12px 40px rgba(0, 0, 0, 0.3),
+        0 4px 16px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.ultra-notification.success {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+}
+
+.ultra-notification.error {
+    background: linear-gradient(135deg, #dc3545 0%, #e83e8c 100%);
+}
+
+.ultra-notification.warning {
+    background: linear-gradient(135deg, #ffc107 0%, #fd7e14 100%);
+    color: #333;
+}
+
+.ultra-notification.info {
+    background: linear-gradient(135deg, #007bff 0%, #6610f2 100%);
+}
+
+/* Ultra Progress Bar */
+#ultra-progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(90deg, 
+        #667eea 0%, 
+        #764ba2 25%, 
+        #f093fb 50%, 
+        #f5576c 75%, 
+        #4facfe 100%);
+    background-size: 200% 100%;
+    animation: progressShimmer 2s ease-in-out infinite;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 99999;
+    opacity: 0;
+    box-shadow: 
+        0 2px 8px rgba(102, 126, 234, 0.4),
+        0 0 20px rgba(102, 126, 234, 0.2);
+}
+
+@keyframes progressShimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+/* Ultra Field Highlighting */
+.ultra-field-highlight {
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ultra-field-highlight::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border: 3px solid transparent;
+    border-radius: 8px;
+    background: linear-gradient(45deg, #667eea, #764ba2, #f093fb) border-box;
+    -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
+
+.ultra-field-highlight.active::before {
+    opacity: 1;
+    animation: fieldGlow 2s ease-in-out infinite;
+}
+
+@keyframes fieldGlow {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
+
+/* Ultra Floating Action Button */
+.ultra-fab {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    box-shadow: 
+        0 8px 32px rgba(102, 126, 234, 0.4),
+        0 4px 16px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 10000;
+    backdrop-filter: blur(20px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+}
+
+.ultra-fab::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.3) 50%, transparent 70%);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+}
+
+.ultra-fab:hover::before {
+    transform: translateX(100%);
+}
+
+.ultra-fab:hover {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 
+        0 12px 48px rgba(102, 126, 234, 0.6),
+        0 6px 24px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.ultra-fab:active {
+    transform: scale(0.95);
+}
+
+/* Ultra Tooltip System */
+.ultra-tooltip {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    white-space: nowrap;
+    z-index: 10001;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.ultra-tooltip.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.ultra-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: rgba(0, 0, 0, 0.9);
+}
+
+/* Ultra Modal Overlay */
+.ultra-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    z-index: 10002;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ultra-modal-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.ultra-modal {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border-radius: 16px;
+    padding: 32px;
+    max-width: 480px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.3),
+        0 8px 32px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    transform: scale(0.8) translateY(40px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ultra-modal-overlay.show .ultra-modal {
+    transform: scale(1) translateY(0);
+}
+
+/* Ultra Field Suggestion Popup */
+.ultra-suggestion-popup {
+    position: absolute;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 
+        0 12px 40px rgba(0, 0, 0, 0.15),
+        0 4px 16px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    border: 2px solid rgba(102, 126, 234, 0.2);
+    z-index: 10003;
+    opacity: 0;
+    transform: translateY(8px) scale(0.95);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(20px);
+    min-width: 280px;
+    max-width: 400px;
+}
+
+.ultra-suggestion-popup.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.ultra-suggestion-item {
+    padding: 12px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.ultra-suggestion-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+    transition: left 0.4s ease;
+}
+
+.ultra-suggestion-item:hover::before {
+    left: 100%;
+}
+
+.ultra-suggestion-item:hover {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-color: rgba(102, 126, 234, 0.3);
+    transform: translateX(4px);
+    box-shadow: 0 4px 16px rgba(102, 126, 234, 0.3);
+}
+
+.ultra-suggestion-item:last-child {
+    margin-bottom: 0;
+}
+
+.ultra-suggestion-confidence {
+    font-size: 11px;
+    opacity: 0.7;
+    float: right;
+    background: rgba(0, 0, 0, 0.1);
+    padding: 2px 8px;
+    border-radius: 12px;
+    margin-left: 8px;
+}
+
+/* Ultra Loading Animations */
+@keyframes ultraSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes ultraPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(1.05); }
+}
+
+@keyframes ultraSlideIn {
+    0% { transform: translateX(100%); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes ultraBounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-12px); }
+    60% { transform: translateY(-6px); }
+}
+
+/* Ultra Loading Spinner */
+.ultra-spinner {
+    width: 32px;
+    height: 32px;
+    border: 3px solid rgba(102, 126, 234, 0.2);
+    border-top: 3px solid #667eea;
+    border-radius: 50%;
+    animation: ultraSpin 1s linear infinite;
+    margin: 16px auto;
+}
+
+/* Ultra Success Animation */
+.ultra-success-checkmark {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #28a745, #20c997);
+    position: relative;
+    display: inline-block;
+    animation: ultraPulse 0.6s ease-in-out;
+}
+
+.ultra-success-checkmark::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Ultra Error Animation */
+.ultra-error-cross {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #dc3545, #e83e8c);
+    position: relative;
+    display: inline-block;
+    animation: ultraBounce 0.6s ease-in-out;
+}
+
+.ultra-error-cross::after {
+    content: '✗';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Ultra Field Animation Effects */
+.ultra-field-filling {
+    position: relative;
+    overflow: hidden;
+}
+
+.ultra-field-filling::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(102, 126, 234, 0.3) 50%, 
+        transparent 100%);
+    animation: ultraSlideIn 1.5s ease-in-out infinite;
+}
+
+/* Ultra Context Menu */
+.ultra-context-menu {
+    position: fixed;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border-radius: 12px;
+    padding: 8px 0;
+    box-shadow: 
+        0 12px 40px rgba(0, 0, 0, 0.2),
+        0 4px 16px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    z-index: 10004;
+    opacity: 0;
+    transform: scale(0.9) translateY(-8px);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(20px);
+    min-width: 200px;
+}
+
+.ultra-context-menu.show {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+}
+
+.ultra-context-menu-item {
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+    border-left: 3px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.ultra-context-menu-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+    transition: left 0.3s ease;
+}
+
+.ultra-context-menu-item:hover::before {
+    left: 100%;
+}
+
+.ultra-context-menu-item:hover {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-left-color: #667eea;
+    transform: translateX(4px);
+}
+
+.ultra-context-menu-separator {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.1), transparent);
+    margin: 8px 12px;
+}
+
+/* Ultra Badge System */
+.ultra-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%);
+    color: white;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: bold;
+    animation: ultraPulse 2s infinite;
+    box-shadow: 0 2px 8px rgba(255, 107, 107, 0.4);
+    border: 2px solid white;
+}
+
+/* Ultra Ripple Effect */
+.ultra-ripple {
+    position: relative;
+    overflow: hidden;
+}
+
+.ultra-ripple::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.ultra-ripple:active::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* Ultra Glassmorphism Effects */
+.ultra-glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+/* Ultra Neon Glow Effects */
+.ultra-neon {
+    text-shadow: 
+        0 0 5px currentColor,
+        0 0 10px currentColor,
+        0 0 15px currentColor,
+        0 0 20px currentColor;
+    animation: ultraPulse 2s ease-in-out infinite;
+}
+
+/* Ultra Parallax Background */
+.ultra-bg-parallax {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, 
+        rgba(102, 126, 234, 0.05) 0%, 
+        rgba(118, 75, 162, 0.05) 50%, 
+        rgba(240, 147, 251, 0.05) 100%);
+    background-size: 400% 400%;
+    animation: ultraGradientShift 15s ease infinite;
+    pointer-events: none;
+    z-index: -1;
+}
+
+@keyframes ultraGradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Ultra Responsive Design */
+@media (max-width: 768px) {
+    #ultra-notification-overlay {
+        top: 10px;
+        right: 10px;
+        left: 10px;
+        max-width: none;
+    }
+    
+    .ultra-fab {
+        bottom: 16px;
+        right: 16px;
+        width: 56px;
+        height: 56px;
+        font-size: 20px;
+    }
+    
+    .ultra-modal {
+        padding: 24px;
+        margin: 16px;
+        width: calc(100% - 32px);
+    }
+    
+    .ultra-suggestion-popup {
+        min-width: 240px;
+        max-width: calc(100vw - 32px);
+    }
+}
+
+/* Ultra Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    .ultra-modal {
+        background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+        color: white;
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    .ultra-suggestion-popup {
+        background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+        color: white;
+        border-color: rgba(102, 126, 234, 0.3);
+    }
+    
+    .ultra-suggestion-item {
+        background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+        color: white;
+    }
+    
+    .ultra-context-menu {
+        background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+        color: white;
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    .ultra-context-menu-item {
+        color: white;
+    }
+}
+
+/* Ultra High Contrast Mode */
+@media (prefers-contrast: high) {
+    .ultra-notification {
+        border: 3px solid white;
+        color: white;
+        background: #000;
+    }
+    
+    .ultra-fab {
+        border: 3px solid white;
+        background: #000;
+        color: white;
+    }
+    
+    .ultra-field-highlight::before {
+        border-color: #fff;
+        background: #fff;
+    }
+}
+
+/* Ultra Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Ultra Print Styles */
+@media print {
+    .ultra-notification,
+    .ultra-fab,
+    .ultra-modal-overlay,
+    .ultra-suggestion-popup,
+    .ultra-context-menu,
+    #ultra-progress-bar {
+        display: none !important;
+    }
+}

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extension Debug Info</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .debug-card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .success { color: #28a745; }
+        .error { color: #dc3545; }
+        .warning { color: #ffc107; }
+        pre {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="debug-card">
+        <h1>🔧 Extension Debug Information</h1>
+        <p>This page helps debug extension loading issues.</p>
+    </div>
+
+    <div class="debug-card">
+        <h2>📋 Manifest Information</h2>
+        <div id="manifestInfo">Loading...</div>
+    </div>
+
+    <div class="debug-card">
+        <h2>📁 File Checks</h2>
+        <div id="fileChecks">Loading...</div>
+    </div>
+
+    <div class="debug-card">
+        <h2>🚀 Quick Fixes</h2>
+        <ol>
+            <li><strong>Clear Extension Cache:</strong> Go to chrome://extensions/, toggle "Developer mode" off and on</li>
+            <li><strong>Reload Extension:</strong> Click the reload button for the extension</li>
+            <li><strong>Check Console:</strong> Right-click extension → "Inspect popup" → Check console for errors</li>
+            <li><strong>Verify Files:</strong> Make sure all referenced files exist in the extension directory</li>
+        </ol>
+    </div>
+
+    <div class="debug-card">
+        <h2>📝 Installation Steps</h2>
+        <ol>
+            <li>Open Chrome and go to <code>chrome://extensions/</code></li>
+            <li>Enable "Developer mode" (top right toggle)</li>
+            <li>Click "Load unpacked"</li>
+            <li>Select the browser-extension folder</li>
+            <li>The extension should appear in the list</li>
+        </ol>
+    </div>
+
+    <script>
+        // Check if we're in extension context
+        if (typeof chrome !== 'undefined' && chrome.runtime) {
+            // Get manifest info
+            const manifest = chrome.runtime.getManifest();
+            document.getElementById('manifestInfo').innerHTML = `
+                <div class="success">✅ Extension Context Detected</div>
+                <p><strong>Name:</strong> ${manifest.name}</p>
+                <p><strong>Version:</strong> ${manifest.version}</p>
+                <p><strong>Options Page:</strong> ${manifest.options_page || 'Not set'}</p>
+                <p><strong>Popup:</strong> ${manifest.action?.default_popup || 'Not set'}</p>
+                <p><strong>Content Scripts:</strong> ${manifest.content_scripts?.length || 0} found</p>
+                <p><strong>Background:</strong> ${manifest.background?.service_worker || 'Not set'}</p>
+                <pre>${JSON.stringify(manifest, null, 2)}</pre>
+            `;
+
+            // Check file accessibility
+            const filesToCheck = [
+                manifest.options_page,
+                manifest.action?.default_popup,
+                manifest.background?.service_worker,
+                ...(manifest.content_scripts?.map(cs => cs.js).flat() || []),
+                ...(manifest.content_scripts?.map(cs => cs.css).flat() || [])
+            ].filter(Boolean);
+
+            let fileChecksHtml = '<ul>';
+            filesToCheck.forEach(file => {
+                // Try to fetch the file to see if it exists
+                fetch(chrome.runtime.getURL(file))
+                    .then(response => {
+                        if (response.ok) {
+                            fileChecksHtml += `<li class="success">✅ ${file}</li>`;
+                        } else {
+                            fileChecksHtml += `<li class="error">❌ ${file} (Status: ${response.status})</li>`;
+                        }
+                    })
+                    .catch(error => {
+                        fileChecksHtml += `<li class="error">❌ ${file} (Error: ${error.message})</li>`;
+                    })
+                    .finally(() => {
+                        document.getElementById('fileChecks').innerHTML = fileChecksHtml + '</ul>';
+                    });
+            });
+
+        } else {
+            document.getElementById('manifestInfo').innerHTML = `
+                <div class="warning">⚠️ Not in Extension Context</div>
+                <p>This page is not being loaded as part of a Chrome extension. To debug:</p>
+                <ol>
+                    <li>Make sure the extension is loaded in Chrome</li>
+                    <li>Access this page through the extension (e.g., options page)</li>
+                    <li>Or open extension popup and navigate to this page</li>
+                </ol>
+            `;
+
+            document.getElementById('fileChecks').innerHTML = `
+                <div class="warning">⚠️ Cannot check files outside extension context</div>
+            `;
+        }
+    </script>
+</body>
+</html>

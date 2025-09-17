@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career AutoFill Assistant - Extension Test Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        .header p {
+            color: #7f8c8d;
+            font-size: 1.2em;
+        }
+
+        .test-section {
+            margin-bottom: 40px;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border-left: 5px solid #3498db;
+        }
+
+        .test-section h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+            margin: 0;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #27ae60, #229954);
+        }
+
+        .btn-warning {
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+        }
+
+        .test-status {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
+        .status-pending {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+
+        .status-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .status-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .instructions {
+            background: #e8f4fd;
+            border: 1px solid #bee5eb;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .instructions h3 {
+            color: #0c5460;
+            margin-bottom: 10px;
+        }
+
+        .instructions ol {
+            margin-left: 20px;
+            color: #0c5460;
+        }
+
+        .instructions li {
+            margin-bottom: 5px;
+        }
+
+        .career-forms {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+        }
+
+        .career-form {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e1e5e9;
+        }
+
+        .career-form h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ecf0f1;
+        }
+
+        .demo-data {
+            background: #f1f2f6;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .career-forms {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .extension-test-controls {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            min-width: 250px;
+        }
+
+        .extension-test-controls h4 {
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(52, 152, 219, 0.3);
+            border-radius: 50%;
+            border-top-color: #3498db;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 Career AutoFill Assistant Test Page</h1>
+            <p>Ultimate Pro Max Extension Testing Environment</p>
+        </div>
+
+        <div class="instructions">
+            <h3>🧪 How to Test Your Extension</h3>
+            <ol>
+                <li>Load the extension in Chrome (Developer mode → Load unpacked)</li>
+                <li>Navigate to this page and open the extension popup</li>
+                <li>Fill out the forms below to test autofill functionality</li>
+                <li>Use the test controls on the right to simulate different scenarios</li>
+                <li>Check the browser console for detailed logs and debug information</li>
+            </ol>
+        </div>
+
+        <div class="test-section">
+            <h2>📝 Job Application Forms</h2>
+            <div class="career-forms">
+                <!-- LinkedIn-style Application -->
+                <div class="career-form">
+                    <h3>LinkedIn Job Application</h3>
+                    <form id="linkedinForm">
+                        <div class="form-group">
+                            <label for="ln_firstName">First Name</label>
+                            <input type="text" id="ln_firstName" name="firstName" placeholder="Enter your first name">
+                        </div>
+                        <div class="form-group">
+                            <label for="ln_lastName">Last Name</label>
+                            <input type="text" id="ln_lastName" name="lastName" placeholder="Enter your last name">
+                        </div>
+                        <div class="form-group">
+                            <label for="ln_email">Email Address</label>
+                            <input type="email" id="ln_email" name="email" placeholder="your.email@company.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="ln_phone">Phone Number</label>
+                            <input type="tel" id="ln_phone" name="phone" placeholder="+1 (555) 123-4567">
+                        </div>
+                        <div class="form-group">
+                            <label for="ln_currentCompany">Current Company</label>
+                            <input type="text" id="ln_currentCompany" name="currentCompany" placeholder="Your current employer">
+                        </div>
+                        <div class="form-group">
+                            <label for="ln_experience">Years of Experience</label>
+                            <select id="ln_experience" name="experience">
+                                <option value="">Select experience level</option>
+                                <option value="0-1">0-1 years</option>
+                                <option value="2-3">2-3 years</option>
+                                <option value="4-5">4-5 years</option>
+                                <option value="6-10">6-10 years</option>
+                                <option value="10+">10+ years</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="ln_summary">Professional Summary</label>
+                            <textarea id="ln_summary" name="summary" rows="4" placeholder="Brief summary of your professional background..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-success">Apply Now</button>
+                    </form>
+                </div>
+
+                <!-- Indeed-style Application -->
+                <div class="career-form">
+                    <h3>Indeed Job Application</h3>
+                    <form id="indeedForm">
+                        <div class="form-group">
+                            <label for="indeed_fullName">Full Name</label>
+                            <input type="text" id="indeed_fullName" name="fullName" placeholder="John Doe">
+                        </div>
+                        <div class="form-group">
+                            <label for="indeed_emailAddress">Email</label>
+                            <input type="email" id="indeed_emailAddress" name="emailAddress" placeholder="john.doe@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="indeed_phoneNumber">Phone</label>
+                            <input type="tel" id="indeed_phoneNumber" name="phoneNumber" placeholder="(555) 123-4567">
+                        </div>
+                        <div class="form-group">
+                            <label for="indeed_address">Address</label>
+                            <input type="text" id="indeed_address" name="address" placeholder="123 Main St, City, State 12345">
+                        </div>
+                        <div class="form-group">
+                            <label for="indeed_workAuth">Work Authorization</label>
+                            <select id="indeed_workAuth" name="workAuth">
+                                <option value="">Select authorization status</option>
+                                <option value="us_citizen">US Citizen</option>
+                                <option value="green_card">Green Card Holder</option>
+                                <option value="visa_holder">Visa Holder</option>
+                                <option value="need_sponsorship">Need Sponsorship</option>
+                            </select>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="indeed_relocate" name="relocate">
+                            <label for="indeed_relocate">Willing to relocate</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="indeed_travel" name="travel">
+                            <label for="indeed_travel">Willing to travel</label>
+                        </div>
+                        <div class="form-group">
+                            <label for="indeed_coverLetter">Cover Letter</label>
+                            <textarea id="indeed_coverLetter" name="coverLetter" rows="6" placeholder="Write your cover letter here..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-success">Submit Application</button>
+                    </form>
+                </div>
+
+                <!-- Company Career Portal -->
+                <div class="career-form">
+                    <h3>Company Career Portal</h3>
+                    <form id="companyForm">
+                        <div class="form-group">
+                            <label for="company_firstName">First Name *</label>
+                            <input type="text" id="company_firstName" name="firstName" required placeholder="First Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="company_middleName">Middle Name</label>
+                            <input type="text" id="company_middleName" name="middleName" placeholder="Middle Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="company_lastName">Last Name *</label>
+                            <input type="text" id="company_lastName" name="lastName" required placeholder="Last Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="company_email">Email Address *</label>
+                            <input type="email" id="company_email" name="email" required placeholder="Email Address">
+                        </div>
+                        <div class="form-group">
+                            <label for="company_phone">Phone Number *</label>
+                            <input type="tel" id="company_phone" name="phone" required placeholder="Phone Number">
+                        </div>
+                        <div class="form-group">
+                            <label for="company_linkedin">LinkedIn Profile</label>
+                            <input type="url" id="company_linkedin" name="linkedin" placeholder="https://linkedin.com/in/yourprofile">
+                        </div>
+                        <div class="form-group">
+                            <label for="company_github">GitHub Profile</label>
+                            <input type="url" id="company_github" name="github" placeholder="https://github.com/yourusername">
+                        </div>
+                        <div class="form-group">
+                            <label for="company_salary">Expected Salary</label>
+                            <input type="number" id="company_salary" name="salary" placeholder="75000" min="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="company_startDate">Available Start Date</label>
+                            <input type="date" id="company_startDate" name="startDate">
+                        </div>
+                        <div class="form-group">
+                            <label for="company_skills">Technical Skills</label>
+                            <textarea id="company_skills" name="skills" rows="3" placeholder="JavaScript, React, Node.js, Python..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-success">Submit Application</button>
+                    </form>
+                </div>
+
+                <!-- Startup Application -->
+                <div class="career-form">
+                    <h3>Startup Job Application</h3>
+                    <form id="startupForm">
+                        <div class="form-group">
+                            <label for="startup_name">Name</label>
+                            <input type="text" id="startup_name" name="name" placeholder="Your full name">
+                        </div>
+                        <div class="form-group">
+                            <label for="startup_contactEmail">Contact Email</label>
+                            <input type="email" id="startup_contactEmail" name="contactEmail" placeholder="best.email@domain.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="startup_mobile">Mobile</label>
+                            <input type="tel" id="startup_mobile" name="mobile" placeholder="Your mobile number">
+                        </div>
+                        <div class="form-group">
+                            <label for="startup_location">Current Location</label>
+                            <input type="text" id="startup_location" name="location" placeholder="City, State/Country">
+                        </div>
+                        <div class="form-group">
+                            <label for="startup_role">Interested Role</label>
+                            <select id="startup_role" name="role">
+                                <option value="">Select a role</option>
+                                <option value="frontend">Frontend Developer</option>
+                                <option value="backend">Backend Developer</option>
+                                <option value="fullstack">Full Stack Developer</option>
+                                <option value="mobile">Mobile Developer</option>
+                                <option value="devops">DevOps Engineer</option>
+                                <option value="qa">QA Engineer</option>
+                                <option value="design">UI/UX Designer</option>
+                                <option value="product">Product Manager</option>
+                                <option value="marketing">Marketing</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="startup_motivation">Why do you want to work with us?</label>
+                            <textarea id="startup_motivation" name="motivation" rows="4" placeholder="Tell us what excites you about this opportunity..."></textarea>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="startup_remote" name="remote">
+                            <label for="startup_remote">Open to remote work</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="startup_equity" name="equity">
+                            <label for="startup_equity">Interested in equity compensation</label>
+                        </div>
+                        <button type="submit" class="btn btn-success">Apply to Startup</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>🔧 Advanced Testing Scenarios</h2>
+            <div class="form-grid">
+                <div>
+                    <h3>Dynamic Field Testing</h3>
+                    <button class="btn" onclick="addDynamicField()">Add Dynamic Field</button>
+                    <button class="btn btn-warning" onclick="removeDynamicFields()">Remove All Dynamic</button>
+                    <div id="dynamicFields"></div>
+                </div>
+                <div>
+                    <h3>Mutation Observer Testing</h3>
+                    <button class="btn" onclick="mutateForm()">Mutate Form Structure</button>
+                    <button class="btn btn-warning" onclick="hideShowFields()">Toggle Field Visibility</button>
+                    <div id="mutationTestArea"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="demo-data">
+            <h3>📋 Sample Test Data (Copy for manual testing)</h3>
+            <pre>
+Name: John Alexander Smith
+Email: john.smith@techcorp.com
+Phone: +1 (555) 123-4567
+Address: 123 Innovation Drive, Tech City, CA 94000
+LinkedIn: https://linkedin.com/in/johnsmith
+GitHub: https://github.com/johnsmith
+Skills: JavaScript, React, Node.js, Python, AWS, Docker, Kubernetes
+Experience: 5-7 years
+Current Company: TechCorp Solutions
+Salary: $95,000
+Start Date: 2024-02-01
+Summary: Experienced full-stack developer with expertise in modern web technologies and cloud platforms. Passionate about building scalable applications and leading development teams.
+            </pre>
+        </div>
+    </div>
+
+    <!-- Extension Test Controls -->
+    <div class="extension-test-controls">
+        <h4>🎮 Extension Controls</h4>
+        <button class="btn" onclick="testExtensionStatus()">Check Extension <span id="extensionStatus" class="test-status status-pending">Testing...</span></button>
+        <button class="btn btn-success" onclick="triggerAutofill()">Trigger Autofill</button>
+        <button class="btn btn-warning" onclick="clearAllForms()">Clear All Forms</button>
+        <button class="btn btn-danger" onclick="stressTest()">Stress Test</button>
+        
+        <div style="margin-top: 15px;">
+            <label>
+                <input type="checkbox" id="debugMode" onchange="toggleDebugMode()">
+                Debug Mode
+            </label>
+        </div>
+        
+        <div style="margin-top: 15px;">
+            <label>Test Scenario:</label>
+            <select id="testScenario" onchange="applyTestScenario()">
+                <option value="default">Default</option>
+                <option value="slow_typing">Slow Typing</option>
+                <option value="fast_batch">Fast Batch</option>
+                <option value="error_simulation">Error Simulation</option>
+            </select>
+        </div>
+    </div>
+
+    <script>
+        // Test page functionality
+        let debugMode = false;
+        let dynamicFieldCounter = 0;
+
+        function log(message, type = 'info') {
+            if (debugMode || type === 'error') {
+                console.log(`[Test Page ${type.toUpperCase()}]`, message);
+            }
+        }
+
+        function testExtensionStatus() {
+            const statusElement = document.getElementById('extensionStatus');
+            statusElement.textContent = 'Checking...';
+            statusElement.className = 'test-status status-pending';
+            
+            // Try to communicate with extension
+            if (typeof chrome !== 'undefined' && chrome.runtime) {
+                chrome.runtime.sendMessage({
+                    type: 'PING',
+                    source: 'test_page'
+                }, (response) => {
+                    if (chrome.runtime.lastError) {
+                        statusElement.textContent = 'Not Detected';
+                        statusElement.className = 'test-status status-error';
+                        log('Extension not detected: ' + chrome.runtime.lastError.message, 'error');
+                    } else {
+                        statusElement.textContent = 'Active';
+                        statusElement.className = 'test-status status-success';
+                        log('Extension is active and responding');
+                    }
+                });
+            } else {
+                statusElement.textContent = 'N/A (Outside Extension)';
+                statusElement.className = 'test-status status-error';
+                log('Not running in extension context', 'error');
+            }
+        }
+
+        function triggerAutofill() {
+            log('Triggering autofill test...');
+            
+            // Simulate extension autofill trigger
+            document.dispatchEvent(new CustomEvent('careerAutofillTrigger', {
+                detail: {
+                    source: 'test_page',
+                    timestamp: Date.now()
+                }
+            }));
+            
+            // Also try direct message to extension
+            if (typeof chrome !== 'undefined' && chrome.runtime) {
+                chrome.runtime.sendMessage({
+                    type: 'TRIGGER_AUTOFILL',
+                    source: 'test_page'
+                });
+            }
+        }
+
+        function clearAllForms() {
+            log('Clearing all forms...');
+            
+            document.querySelectorAll('form').forEach(form => {
+                form.reset();
+            });
+            
+            // Also clear manually since some fields might not reset properly
+            document.querySelectorAll('input, textarea, select').forEach(field => {
+                if (field.type === 'checkbox' || field.type === 'radio') {
+                    field.checked = false;
+                } else {
+                    field.value = '';
+                }
+            });
+        }
+
+        function stressTest() {
+            log('Starting stress test...');
+            
+            let testCount = 0;
+            const maxTests = 50;
+            
+            const stressInterval = setInterval(() => {
+                testCount++;
+                
+                // Randomly modify form fields
+                const allFields = document.querySelectorAll('input, textarea, select');
+                const randomField = allFields[Math.floor(Math.random() * allFields.length)];
+                
+                if (randomField) {
+                    if (randomField.type === 'text' || randomField.type === 'email') {
+                        randomField.value = `Test${testCount}_${Math.random().toString(36).substr(2, 9)}`;
+                    }
+                    
+                    // Trigger change event
+                    randomField.dispatchEvent(new Event('change', { bubbles: true }));
+                }
+                
+                if (testCount >= maxTests) {
+                    clearInterval(stressInterval);
+                    log('Stress test completed');
+                }
+            }, 100);
+        }
+
+        function toggleDebugMode() {
+            debugMode = document.getElementById('debugMode').checked;
+            log(`Debug mode ${debugMode ? 'enabled' : 'disabled'}`);
+        }
+
+        function applyTestScenario() {
+            const scenario = document.getElementById('testScenario').value;
+            log(`Applying test scenario: ${scenario}`);
+            
+            // Send scenario to extension
+            if (typeof chrome !== 'undefined' && chrome.runtime) {
+                chrome.runtime.sendMessage({
+                    type: 'SET_TEST_SCENARIO',
+                    scenario: scenario
+                });
+            }
+        }
+
+        function addDynamicField() {
+            dynamicFieldCounter++;
+            const container = document.getElementById('dynamicFields');
+            
+            const fieldDiv = document.createElement('div');
+            fieldDiv.className = 'form-group';
+            fieldDiv.innerHTML = `
+                <label for="dynamic_${dynamicFieldCounter}">Dynamic Field ${dynamicFieldCounter}</label>
+                <input type="text" id="dynamic_${dynamicFieldCounter}" name="dynamic_${dynamicFieldCounter}" 
+                       placeholder="Dynamic field ${dynamicFieldCounter}">
+            `;
+            
+            container.appendChild(fieldDiv);
+            log(`Added dynamic field: dynamic_${dynamicFieldCounter}`);
+        }
+
+        function removeDynamicFields() {
+            const container = document.getElementById('dynamicFields');
+            container.innerHTML = '';
+            dynamicFieldCounter = 0;
+            log('Removed all dynamic fields');
+        }
+
+        function mutateForm() {
+            const container = document.getElementById('mutationTestArea');
+            
+            // Add a new form with random fields
+            const formId = `mutated_form_${Date.now()}`;
+            const formDiv = document.createElement('div');
+            formDiv.innerHTML = `
+                <form id="${formId}" style="margin-top: 15px; padding: 15px; border: 1px solid #ddd; border-radius: 8px;">
+                    <h4>Mutated Form</h4>
+                    <div class="form-group">
+                        <label>Mutated Name Field</label>
+                        <input type="text" name="mutated_name" placeholder="This field was added dynamically">
+                    </div>
+                    <div class="form-group">
+                        <label>Mutated Email Field</label>
+                        <input type="email" name="mutated_email" placeholder="dynamic@email.com">
+                    </div>
+                    <button type="button" onclick="this.parentElement.parentElement.remove()">Remove This Form</button>
+                </form>
+            `;
+            
+            container.appendChild(formDiv);
+            log(`Created mutated form: ${formId}`);
+        }
+
+        function hideShowFields() {
+            const forms = document.querySelectorAll('.career-form');
+            forms.forEach((form, index) => {
+                if (index % 2 === 0) {
+                    form.style.display = form.style.display === 'none' ? 'block' : 'none';
+                }
+            });
+            log('Toggled visibility of alternating forms');
+        }
+
+        // Form submission handlers
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                log(`Form submitted: ${form.id || 'unnamed'}`);
+                
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData.entries());
+                console.log('Form data:', data);
+                
+                alert(`Form "${form.id || 'unnamed'}" submitted successfully!\nCheck console for data.`);
+            });
+        });
+
+        // Listen for extension messages
+        if (typeof chrome !== 'undefined' && chrome.runtime) {
+            chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+                log('Received message from extension:', message);
+                sendResponse({ status: 'received', timestamp: Date.now() });
+                return true;
+            });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            log('Test page loaded and ready');
+            testExtensionStatus();
+        });
+
+        // Monitor for extension activity
+        let activityMonitor = setInterval(() => {
+            // Check for extension-added elements
+            const extensionElements = document.querySelectorAll('[data-career-autofill]');
+            if (extensionElements.length > 0) {
+                log(`Found ${extensionElements.length} extension elements on page`);
+            }
+        }, 5000);
+    </script>
+</body>
+</html>

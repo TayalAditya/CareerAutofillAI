@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        body {
+            width: 350px;
+            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .logo {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            margin: 0 auto 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            margin: 0;
+        }
+        .subtitle {
+            font-size: 12px;
+            color: #666;
+            margin: 5px 0 0 0;
+        }
+        .status {
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            text-align: center;
+            font-size: 14px;
+        }
+        .status.connected {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .status.disconnected {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .profile-summary {
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            font-size: 13px;
+        }
+        .profile-item {
+            margin: 4px 0;
+        }
+        .profile-item strong {
+            color: #495057;
+        }
+        .autofill-section {
+            margin-bottom: 15px;
+        }
+        .detected-fields {
+            max-height: 120px;
+            overflow-y: auto;
+            margin: 10px 0;
+        }
+        .field-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 6px 8px;
+            margin: 4px 0;
+            background: #f1f3f4;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+        .field-name {
+            flex: 1;
+            font-weight: 500;
+            color: #333;
+        }
+        .field-confidence {
+            font-size: 10px;
+            background: #007bff;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 10px;
+        }
+        .btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 14px;
+            margin: 8px 0;
+            transition: all 0.2s;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+        .btn-success {
+            background: #28a745;
+            color: white;
+        }
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .footer {
+            text-align: center;
+            font-size: 11px;
+            color: #666;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+        .form-count {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">CA</div>
+        <h1 class="title">Career AutoFill</h1>
+        <p class="subtitle">Smart job application assistant</p>
+    </div>
+
+    <div id="status" class="status disconnected">
+        🔗 Connecting to backend...
+    </div>
+
+    <div id="profile-section" style="display: none;">
+        <div class="profile-summary">
+            <div class="profile-item"><strong>Profile:</strong> <span id="profile-name">Not loaded</span></div>
+            <div class="profile-item"><strong>Email:</strong> <span id="profile-email">-</span></div>
+            <div class="profile-item"><strong>Skills:</strong> <span id="profile-skills">-</span></div>
+        </div>
+    </div>
+
+    <div id="autofill-section" style="display: none;">
+        <div class="form-count">
+            <span id="field-count">0</span> form fields detected on this page
+        </div>
+        
+        <div class="detected-fields" id="detected-fields">
+            <!-- Detected fields will appear here -->
+        </div>
+
+        <button id="ai-analyze-btn" class="btn btn-primary" style="margin-bottom: 8px;">
+            🤖 AI Job Analysis
+        </button>
+
+        <button id="auto-fill-btn" class="btn btn-primary" style="margin-bottom: 8px;">
+            🎯 Smart Auto-Fill
+        </button>
+
+        <button id="ai-optimize-btn" class="btn btn-secondary" style="margin-bottom: 8px;">
+            ⚡ AI Optimize Application
+        </button>
+
+        <button id="refresh-fields-btn" class="btn btn-secondary">
+            🔄 Refresh Fields
+        </button>
+    </div>
+
+    <div id="setup-section">
+        <button id="open-dashboard-btn" class="btn btn-primary">
+            📋 Open Dashboard
+        </button>
+        
+        <button id="upload-resume-btn" class="btn btn-secondary">
+            📄 Upload Resume
+        </button>
+    </div>
+
+    <div class="footer">
+        <p>Built by Aditya Tayal | IIT Mandi CSE</p>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>

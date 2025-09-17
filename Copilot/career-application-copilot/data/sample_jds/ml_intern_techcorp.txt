@@ -1,0 +1,43 @@
+Machine Learning Engineer Intern - Summer 2024
+
+Company: TechCorp AI
+Location: Bangalore, India (Hybrid)
+Duration: 3 months
+
+Job Description:
+We are seeking a passionate Machine Learning intern to join our cutting-edge AI research team. You'll work on real-world projects involving computer vision, natural language processing, and deep learning applications.
+
+Responsibilities:
+- Develop and optimize machine learning models using TensorFlow and PyTorch
+- Implement computer vision algorithms for image recognition and processing
+- Collaborate with senior engineers on model deployment and scaling
+- Conduct data preprocessing and feature engineering
+- Write clean, efficient Python code following best practices
+- Participate in code reviews and technical discussions
+
+Requirements:
+- Currently pursuing B.Tech/M.Tech in Computer Science, AI, or related field
+- Strong programming skills in Python
+- Experience with machine learning frameworks (TensorFlow, PyTorch, Keras)
+- Knowledge of computer vision and image processing techniques
+- Understanding of deep learning architectures (CNNs, RNNs, Transformers)
+- Experience with Git version control
+- Familiarity with Linux/Unix environments
+- Strong problem-solving and analytical skills
+
+Preferred Qualifications:
+- Experience with cloud platforms (AWS, Azure, GCP)
+- Knowledge of MLOps and model deployment
+- Previous internship or project experience in AI/ML
+- Understanding of REST APIs and web development
+- Experience with Docker and containerization
+- Contributions to open-source ML projects
+
+What We Offer:
+- Mentorship from experienced ML engineers
+- Access to high-end GPUs and computing resources
+- Opportunity to work on published research
+- Competitive stipend
+- Potential for full-time conversion
+
+Apply by submitting your resume, cover letter, and links to relevant projects.

@@ -1,0 +1,58 @@
+Data Science Intern
+
+Company: DataFlow Analytics
+Location: Pune, India
+Duration: 4 months
+
+Position Summary:
+DataFlow Analytics is seeking a Data Science intern to join our analytics team. You'll work on challenging data problems across various industries including healthcare, finance, and e-commerce.
+
+What You'll Do:
+- Analyze large datasets to extract actionable insights
+- Build predictive models using machine learning algorithms
+- Create data visualizations and dashboards
+- Perform statistical analysis and hypothesis testing
+- Work with real-time data streaming systems
+- Present findings to stakeholders and clients
+- Collaborate with cross-functional teams
+
+Required Skills:
+- Strong foundation in statistics and mathematics
+- Proficiency in Python and data science libraries (pandas, numpy, scikit-learn)
+- Experience with data visualization tools (matplotlib, seaborn, plotly)
+- Knowledge of SQL and database querying
+- Understanding of machine learning algorithms
+- Experience with Jupyter notebooks
+- Basic knowledge of probability and statistics
+
+Preferred Qualifications:
+- Experience with big data tools (Spark, Hadoop)
+- Knowledge of deep learning frameworks (TensorFlow, PyTorch)
+- Familiarity with cloud platforms (AWS, Azure, GCP)
+- Experience with data engineering concepts
+- Knowledge of A/B testing and experimental design
+- Previous internship or project experience in data science
+- Understanding of business analytics concepts
+
+Technical Stack:
+- Languages: Python, SQL, R (optional)
+- Tools: Jupyter, Git, Docker
+- Databases: PostgreSQL, MongoDB
+- Cloud: AWS (S3, EC2, SageMaker)
+- Visualization: Tableau, Power BI, custom dashboards
+
+Learning Opportunities:
+- Real-world data science project experience
+- Exposure to multiple industry verticals
+- Mentorship from senior data scientists
+- Training on latest ML techniques and tools
+- Opportunity to work with large-scale data
+
+Application Requirements:
+- Resume highlighting relevant coursework and projects
+- Cover letter explaining your interest in data science
+- Portfolio showcasing data science projects (GitHub/Kaggle)
+- Academic transcripts
+- Any relevant certifications or online course completions
+
+We value diversity and encourage applications from candidates of all backgrounds.
