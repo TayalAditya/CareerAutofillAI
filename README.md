@@ -1,12 +1,99 @@
-# React + Vite
+# Career Autofill AI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Name:** Aditya Tayal  
+**University:** Indian Instittute of Technology Mandi
+**Department:** Cmputer Science Engineering 3rd Year  
+**Email:** b23243@students.iitmandi.ac.in  
 
-Currently, two official plugins are available:
+An AI-powered agent that automates job application form filling by reasoning, planning, and executing tasks using fine-tuned models.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Overview
 
-## Expanding the ESLint configuration
+This project implements an AI agent that selects a manual task (job application form filling) from daily life/university work and automates it. The agent uses at least one fine-tuned model (LoRA-based) for specialized task performance, with evaluation metrics to measure quality and reliability.
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Core Features (Mandatory)
+
+- **Manual Task Automation**: Automates job application form filling - a common manual task in career applications.
+- **AI Agent Architecture**: 
+  - Reason: Analyzes job descriptions and user profiles
+  - Plan: Creates step-by-step filling strategies
+  - Execute: Fills forms automatically
+- **Fine-tuned Model Integration**:
+  - Uses LoRA (Low-Rank Adaptation) for parameter-efficient fine-tuning
+  - Specialized for form field detection and content generation
+  - Chosen for: Task specialization (better accuracy on job-related content), improved reliability (reduced hallucinations), and adapted style (professional application language)
+- **Evaluation Metrics**:
+  - Accuracy: Field detection precision/recall
+  - Completeness: Percentage of fields filled correctly
+  - Quality: Content relevance and professionalism scores
+  - Reliability: Success rate across different form types
+
+## Optional Features (Bonus Points)
+
+- **Multi-agent Collaboration**: Planner + Executor agents working together
+- **External Integrations**: 
+  - RAG (Retrieval-Augmented Generation) for context-aware responses
+  - MCP (Model Context Protocol) for tool integration
+  - Custom browser extension tools
+- **User Interface**: 
+  - Web dashboard (React/Vite)
+  - Browser extension for seamless form filling
+  - CLI for batch processing
+
+## Notes
+
+✅ LLMs were used during development for code generation and architecture design. All interaction logs are included in the deliverables.
+
+## Deliverables
+
+- **Source Code**: Complete prototype in this repository
+- **Architecture Document**: See `ARCHITECTURE.md`
+- **Data Science Report**: See `DATA_SCIENCE_REPORT.md`
+- **Interaction Logs**: See `INTERACTION_LOGS.md`
+- **Demo Video**: [Watch Demo](https://example.com/demo-video-link) *(Replace with actual link)*
+
+## Installation & Setup
+
+### Prerequisites
+- Node.js 18+
+- Python 3.8+
+- Git
+
+### Frontend Setup
+```bash
+npm install
+npm run dev
+```
+
+### Backend Setup
+```bash
+cd Copilot/career-application-copilot
+pip install -r requirements.txt
+python src/main.py --interactive
+```
+
+### Browser Extension
+1. Load `Copilot/career-application-copilot/browser-extension` as unpacked extension
+2. Follow `INSTALLATION_GUIDE.md` for setup
+
+## Usage
+
+1. Upload your resume and profile data
+2. Navigate to a job application form
+3. Click the extension button to auto-fill
+4. Review and submit
+
+## Architecture
+
+- **Frontend**: React + Vite for modern web UI
+- **Backend**: Python FastAPI for AI processing
+- **Models**: Fine-tuned LLM with LoRA for specialized tasks
+- **Extension**: Chrome extension for browser integration
+
+## Contributing
+
+This is a prototype project. For improvements or issues, please create a PR or issue in this repository.
+
+## License
+
+MIT License
